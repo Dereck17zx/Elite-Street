@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Street - Tienda Online de Ropa y Zapatillas</title>
+    
+    <!-- Etiquetas Meta de SEO -->
+    <meta name="description" content="Encontrá la mejor selección de zapatillas urbanas, deportivas y ropa de diseño a precios de remate en Todo Remates. Envíos a todo el país y atención directa por WhatsApp.">
+    <meta name="keywords" content="todo remates, ropa, zapatillas, indumentaria, calzado, tienda online, whatsapp, ofertas, moda urbana">
+    <meta name="author" content="Todo Remates">
+    
+    <!-- Open Graph / Facebook (Compatir en Redes Sociales) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Todo Remates - Tienda Online de Ropa y Zapatillas">
+    <meta property="og:description" content="Encontrá la mejor selección de zapatillas urbanas, deportivas y ropa de diseño a precios de remate.">
+    <meta property="og:image" content="images/sneaker_sport_red.png">
+
+    <!-- Iconos de FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Hoja de Estilos Personalizada -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- --- CABECERA DE NAVEGACIÓN --- -->
+    <header class="main-header glass-panel">
+        <div class="container header-container">
+            <!-- Logotipo -->
+            <a href="#" class="logo" id="store-logo">
+                <i class="fa-solid fa-tags"></i> Elite <span>Street</span>
+            </a>
+
+            <!-- Menú de Navegación -->
+            <nav class="nav-menu" aria-label="Navegación principal">
+                <a href="#" class="nav-link active">Inicio</a>
+                <a href="#catalogo" class="nav-link">Catálogo</a>
+                <a href="#contacto" class="nav-link">Contacto</a>
+            </nav>
+
+            <!-- Acciones de la Cabecera -->
+            <div class="header-actions">
+                <!-- Alternador de Tema (Claro/Oscuro) -->
+                <button class="header-btn" id="theme-toggle" aria-label="Cambiar tema claro/oscuro">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+
+                <!-- Botón de Menú Móvil (Hamburguesa) -->
+                <button class="header-btn mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú de navegación">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- --- SECCIÓN PRINCIPAL (HERO) --- -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <i class="fa-solid fa-fire"></i> Precios Increíbles de Temporada
+                </span>
+                <h1 class="hero-title">
+                    Viste con Estilo,<br>Paga precio de <span>Remate</span>
+                </h1>
+                <p class="hero-description">
+                    Explora nuestra colección exclusiva de zapatillas urbanas de primer nivel y prendas streetwear de alta calidad. Compra de forma simple y rápida.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#catalogo" class="btn-primary">
+                        <i class="fa-solid fa-magnifying-glass"></i> Explorar Catálogo
+                    </a>
+                    <button onclick="contactDirectly()" class="btn-secondary">
+                        <i class="fa-brands fa-whatsapp"></i> Chatear por WhatsApp
+                    </button>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="hero-circle-bg"></div>
+                <img src="images/sneaker_sport_red.png" alt="Zapatilla Premium Todo Remates" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- --- SECCIÓN DEL CATÁLOGO DE LA TIENDA --- -->
+    <main class="store-section" id="catalogo">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestra Colección</h2>
+                <p class="section-subtitle">Explora nuestro stock disponible de zapatillas y ropa urbana con precios de liquidación y atención personalizada.</p>
+            </div>
+
+            <!-- Controles (Filtros, Búsqueda, Ordenamiento) -->
+            <div class="store-controls glass-panel">
+                <!-- Filtros de Categoría -->
+                <div class="filter-group" role="group" aria-label="Filtrar por categoría">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="ropa">Ropa</button>
+                    <button class="filter-btn" data-filter="zapatillas">Zapatillas</button>
+                </div>
+
+                <!-- Búsqueda y Ordenamiento -->
+                <div class="search-sort-group">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="search-input" class="search-input" placeholder="Buscar zapatillas, buzos...">
+                    </div>
+                    <select id="sort-select" class="sort-select" aria-label="Ordenar productos">
+                        <option value="default">Relevancia</option>
+                        <option value="price-asc">Precio: Menor a Mayor</option>
+                        <option value="price-desc">Precio: Mayor a Menor</option>
+                        <option value="rating">Más Valorados</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Grilla de Productos -->
+            <div class="product-grid" id="products-grid">
+                <!-- Los productos se renderizarán dinámicamente aquí mediante JavaScript -->
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- --- MODAL DE DETALLE DE PRODUCTO --- -->
+    <div class="modal" id="product-modal" aria-hidden="true" role="dialog">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="close-modal-btn" id="close-modal" aria-label="Cerrar vista de producto">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-img-container">
+                <img id="modal-img" src="" alt="">
+            </div>
+            <div class="modal-details-container">
+                <span class="modal-category" id="modal-category">Categoría</span>
+                <h2 class="modal-title" id="modal-title">Nombre del Producto</h2>
+                <div class="modal-rating">
+                    <i class="fa-solid fa-star" id="modal-rating-star"></i>
+                    <span id="modal-rating-text">0.0 (0)</span>
+                </div>
+                <div class="modal-price-box">
+                    <span class="modal-price-original" id="modal-price-original">$0</span>
+                    <span class="modal-price" id="modal-price">$0</span>
+                </div>
+                <p class="modal-description" id="modal-description">Descripción del producto...</p>
+                
+                <div class="modal-actions">
+                    <button class="modal-whatsapp-btn-primary" id="modal-whatsapp-btn">
+                        <i class="fa-brands fa-whatsapp"></i> Comprar por WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- --- PIE DE PÁGINA (FOOTER) --- -->
+    <footer class="main-footer" id="contacto">
+        <div class="container footer-grid">
+            <!-- Información de la Marca -->
+            <div class="footer-brand">
+                <h3>Todo <span>Remates</span></h3>
+                <p>Tu tienda de confianza para vestir con el mejor estilo urbano a precios incomparables.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Visitar Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link" aria-label="Visitar Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="social-link" aria-label="Visitar TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- Categorías -->
+            <div class="footer-links-col">
+                <h4>Categorías</h4>
+                <ul class="footer-links">
+                    <li><a href="#catalogo" class="footer-link">Ver Todo</a></li>
+                    <li><a href="#catalogo" class="footer-link">Calzado Deportivo</a></li>
+                    <li><a href="#catalogo" class="footer-link">Ropa Urbana</a></li>
+                    <li><a href="#catalogo" class="footer-link">Accesorios</a></li>
+                </ul>
+            </div>
+
+            <!-- Información de la Tienda -->
+            <div class="footer-links-col">
+                <h4>Ayuda</h4>
+                <ul class="footer-links">
+                    <li><a href="#" class="footer-link">Cómo comprar</a></li>
+                    <li><a href="#" class="footer-link">Medios de pago</a></li>
+                    <li><a href="#" class="footer-link">Métodos de envío</a></li>
+                    <li><a href="#" class="footer-link">Preguntas Frecuentes</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div class="footer-links-col">
+                <h4>Contacto</h4>
+                <ul class="footer-links">
+                    <li><i class="fa-solid fa-phone"></i> +51 920 487 104</li>
+                    <li><i class="fa-solid fa-envelope"></i> info@todoremates.com</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Lima, Perú</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container footer-bottom">
+            <p>&copy; 2026 Todo Remates. Todos los derechos reservados.</p>
+            <p>Hecho con <i class="fa-solid fa-heart" style="color: var(--accent);"></i> para la comunidad urbana</p>
+        </div>
+    </footer>
+
+    <!-- --- WIDGET FLOTANTE DE WHATSAPP --- -->
+    <div class="whatsapp-float">
+        <span class="whatsapp-tooltip">¡Chateá con nosotros!</span>
+        <button onclick="contactDirectly()" class="whatsapp-btn" aria-label="Chatear por WhatsApp">
+            <div class="pulse-animation"></div>
+            <i class="fa-brands fa-whatsapp"></i>
+        </button>
+    </div>
+
+    <!-- Script Personalizado -->
+    <script src="java.js"></script>
+</body>
+</html>
